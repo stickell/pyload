@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+# command to install dependencies
+install:
+  - "pip install pycurl"
+# command to run tests
+script:
+  - ./pyLoadCore.py -v
+  - ./pyLoadCore.py --daemon -d -c
+  - ./pyLoadCore.py --quit
