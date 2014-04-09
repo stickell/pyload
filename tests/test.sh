@@ -14,6 +14,7 @@ do
 	sleep 5
 done
 echo "Download test completed"
+./pyLoadCli.py -u pyload --pw=pyload queue
 if [[ "`./pyLoadCli.py -u pyload --pw=pyload queue`" == *failed* ]]
 then
 	echo "Download failed"
