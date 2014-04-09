@@ -5,8 +5,9 @@ python:
 # command to install dependencies
 install:
   - "pip install pycurl"
+before_script:
+  - mkdir $HOME/.pyload
+  - cp tests/test_conf/* $HOME/.pyload/
 # command to run tests
 script:
-  - ./pyLoadCore.py -v
-  - ./pyLoadCore.py --daemon -d -c
-  - ./pyLoadCore.py --quit
+  - bash tests/test.sh
