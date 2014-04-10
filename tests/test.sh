@@ -1,21 +1,21 @@
 #!/bin/bash
 ./pyLoadCore.py -v
 ./pyLoadCore.py --daemon -c -d
-until [ "`./pyLoadCli.py -u pyload --pw=pyload status`" == "No downloads running." ]
+until [ "`./pyLoadCli.py status`" == "No downloads running." ]
 do
 	sleep 1
 done
-./pyLoadCli.py -u pyload --pw=pyload add Test http://proof.ovh.net/files/10Mio.dat
+./pyLoadCli.py add Test http://proof.ovh.net/files/10Mio.dat
 echo "Added download test"
 sleep 5
-until [ "`./pyLoadCli.py -u pyload --pw=pyload status`" == "No downloads running." ]
+until [ "`./pyLoadCli.py status`" == "No downloads running." ]
 do
-	./pyLoadCli.py -u pyload --pw=pyload status
+	./pyLoadCli.py status
 	sleep 5
 done
 echo "Download test completed"
-./pyLoadCli.py -u pyload --pw=pyload queue
-if [[ "`./pyLoadCli.py -u pyload --pw=pyload queue`" == *failed* ]]
+./pyLoadCli.py queue
+if [[ "`./pyLoadCli.py queue`" == *failed* ]]
 then
 	echo "Download failed"
 	./pyLoadCore.py --quit
