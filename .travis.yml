@@ -2,12 +2,15 @@ language: python
 python:
   - "2.6"
   - "2.7"
-# command to install dependencies
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install gettext
+  - pip install paver
 install:
-  - "pip install pycurl"
+  - pip install pycurl
+  - paver compile_translations
 before_script:
   - mkdir $HOME/.pyload
   - cp tests/test_conf/* $HOME/.pyload/
-# command to run tests
 script:
-  - bash tests/test.sh
+  - ./tests/test.sh
