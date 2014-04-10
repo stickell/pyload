@@ -13,4 +13,4 @@ before_script:
   - mkdir $HOME/.pyload
   - cp tests/test_conf/* $HOME/.pyload/
 script:
-  - ./tests/test.sh
+  - bash tests/test.sh
